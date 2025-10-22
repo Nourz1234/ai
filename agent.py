@@ -106,7 +106,7 @@ def setup_llm():
     # Download the GGUF file from Hugging Face
     model_path = hf_hub_download(
         repo_id="Qwen/Qwen2.5-72B-Instruct-GGUF",
-        filename="qwen2.5-72b-instruct.Q4_K_M.gguf"
+        filename="qwen2.5-72b-instruct-q4_k_m.gguf"
     )
 
     # Initialize the model (this loads the quantized weights)
