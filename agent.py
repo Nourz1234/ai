@@ -109,6 +109,25 @@ def setup_llm():
         filename="qwen2.5-72b-instruct-q4_k_m-00001-of-00012.gguf",
     )
 
+    files = [
+        "qwen2.5-72b-instruct-q4_k_m-00002-of-00012.gguf",
+        "qwen2.5-72b-instruct-q4_k_m-00003-of-00012.gguf",
+        "qwen2.5-72b-instruct-q4_k_m-00004-of-00012.gguf",
+        "qwen2.5-72b-instruct-q4_k_m-00005-of-00012.gguf",
+        "qwen2.5-72b-instruct-q4_k_m-00006-of-00012.gguf",
+        "qwen2.5-72b-instruct-q4_k_m-00007-of-00012.gguf",
+        "qwen2.5-72b-instruct-q4_k_m-00008-of-00012.gguf",
+        "qwen2.5-72b-instruct-q4_k_m-00009-of-00012.gguf",
+        "qwen2.5-72b-instruct-q4_k_m-00010-of-00012.gguf",
+        "qwen2.5-72b-instruct-q4_k_m-00011-of-00012.gguf",
+        "qwen2.5-72b-instruct-q4_k_m-00012-of-00012.gguf",
+    ]
+    for file in files:
+        hf_hub_download(
+            repo_id="Qwen/Qwen2.5-72B-Instruct-GGUF",
+            filename=file,
+        )
+
     # Initialize the model (this loads the quantized weights)
     return Llama(
         model_path=model_path,
@@ -297,5 +316,4 @@ def main_menu():
 
 # --- RUN ---
 if __name__ == "__main__":
-    main_menu()
     main_menu()
