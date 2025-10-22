@@ -2,13 +2,12 @@ import os
 
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import Docx2txtLoader, PyPDFLoader, TextLoader
-from langchain_community.llms import HuggingFacePipeline
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from transformers import pipeline
+from llama_cpp import Llama
 
 # --- Suppress Tokenizer Warning ---
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -21,7 +20,6 @@ VECTOR_STORE_DIR = os.path.join(WORKSPACE_DIR, "vector_store")
 LLM_SUMMARIES_DIR = os.path.join(WORKSPACE_DIR, "llm_summaries")
 
 # MODEL_NAME = "microsoft/Phi-3-mini-4k-instruct"
-MODEL_NAME = "Qwen/Qwen2.5-72B-Instruct-GGUF"
 EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 MAX_TOKENS = 4096
 RETRIEVER_K = 5
@@ -103,16 +101,21 @@ def load_vector_store(embedding_model):
 
 # --- RAG CHAIN SETUP ---
 def setup_llm():
-    pipe = pipeline(
-        "text-generation",
-        model=MODEL_NAME,
-        tokenizer=MODEL_NAME,
-        device_map="auto",
-        max_new_tokens=MAX_TOKENS,
-        temperature=0.1,
+    from huggingface_hub import hf_hub_download
+
+    # Download the GGUF file from Hugging Face
+    model_path = hf_hub_download(
+        repo_id="Qwen/Qwen2.5-72B-Instruct-GGUF",
+        filename="qwen2.5-72b-instruct.Q4_K_M.gguf"
     )
 
-    return HuggingFacePipeline(pipeline=pipe)
+    # Initialize the model (this loads the quantized weights)
+    return Llama(
+        model_path=model_path,
+        n_ctx=4096,  # context window
+        n_threads=8,  # CPU threads (adjust to your CPU)
+        n_gpu_layers=0,  # set >0 if using GPU acceleration build
+    )
 
     # print("🔗 Connecting to local LLM via LM Studio...")
     # return ChatOpenAI(base_url=LLM_SERVER_URL, temperature=0.1)
