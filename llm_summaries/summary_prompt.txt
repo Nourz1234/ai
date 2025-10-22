@@ -1,0 +1,31 @@
+histories: Array (14)
+0
+{created_at: "2025-05-28 12:35:00", updated_at: "2025-05-28 12:35:00", job: "Follow comments of the request study", notes: " Dear Sir, ↵1. Signed and stamped application form…ward to your update.↵Thanks and best regards,↵↵Li", state: "Send request ", …}
+1
+{created_at: "2025-05-21 21:59:00", updated_at: "2025-05-21 21:59:00", job: "Follow comments of the request study", notes: "", state: "waiting period  ended", …}
+2
+{created_at: "2025-05-21 16:26:31", updated_at: "2025-05-21 16:26:31", job: "first reviewer", notes: "Dear Respected\r↵Waiting for remaining documents to be provided", state: "Send notes to establishment", …}
+3
+{created_at: "2025-05-21 16:25:00", updated_at: "2025-05-21 16:25:00", job: "Processing Request by Authorized Body", notes: "Dear Respected\r↵Waiting for remaining documents to be provided", state: "Send notes to establishment", …}
+4
+{created_at: "2025-05-21 13:46:00", updated_at: "2025-05-21 13:46:00", job: "Follow comments of the request study", notes: "Dear Sir,↵1. Signed and stamped application form a…end maximum deadline?↵Thanks and best regards,↵Li", state: "Send request ", …}
+5
+{created_at: "2025-05-19 13:01:30", updated_at: "2025-05-19 13:01:30", job: "first reviewer", notes: "Dear Respected\r↵1. Kindly Find Attached PDF for Ap…lease provide test report for cable with standard", state: "Send notes to establishment", …}
+6
+{created_at: "2025-05-19 13:01:00", updated_at: "2025-05-19 13:01:00", job: "Processing Request by Authorized Body", notes: "Dear Respected\r↵1. Kindly Find Attached PDF for Ap…lease provide test report for cable with standard", state: "Send notes to establishment", …}
+7
+{created_at: "2025-05-19 04:49:00", updated_at: "2025-05-19 04:49:00", job: "Follow comments of the request study", notes: "Dear Sir / Madam,↵Thanks for your comments.↵↵The f…rd to your update.↵↵Thanks and best regards,↵↵Li↵", state: "Send request ", …}
+8
+{created_at: "2025-05-13 16:29:03", updated_at: "2025-05-13 16:29:03", job: "first reviewer", notes: "Dear Respected\r↵Kindly provide the following missi…tor, to verify the cable type used\r↵\r↵Thanks & BR", state: "Send notes to establishment", …}
+9
+{created_at: "2025-05-13 16:28:00", updated_at: "2025-05-13 16:28:00", job: "Processing Request by Authorized Body", notes: "Dear Respected\r↵Kindly provide the following missi…tor, to verify the cable type used\r↵\r↵Thanks & BR", state: "Send notes to establishment", …}
+10
+{created_at: "2025-05-12 15:13:48", updated_at: "2025-05-12 15:13:48", job: "first reviewer", notes: "New Allocation For Request 225952 at 2025-05-12 04:13 pm by Karim Ahmed Hamed Aboamou", state: "New Allocation", …}
+11
+{created_at: "2025-05-12 11:22:00", updated_at: "2025-05-12 11:22:00", job: "Determining Request Studying Body", notes: "", state: "Refer to authorized body", …}
+12
+{created_at: "2025-05-12 11:00:00", updated_at: "2025-05-12 11:00:00", job: "Wait for the payment of request Invoice ", notes: "", state: "Payment", …}
+13
+{created_at: null, updated_at: null, job: "Processing Request by Authorized Body", notes: "", state: "Waiting...", …}
+
+Array Prototype

@@ -1,0 +1,6 @@
+1. Overall Conformity Status:** YES
+2. Key Reasons / Missing Items:
+    * Missing documents: TRF No. IEC62893_4_1B (Electric Vehicle Charger and Accessories Information)
+    * Major inconsistencies: 
+        - Incorrect test report number CN24SNYE 001, CN24OHT0 001
+        - Test report date not provided
