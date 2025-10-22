@@ -1,6 +1,0 @@
-1. Overall Conformity Status: **YES**
-
-2. Key Reasons / Missing Items:**
-    * Test report for EN 61851-23 and IEC 61851-21-1 standards is missing.
-    * Manufacturer's Declaration per sub-clause 4.2.5 of IECEE 02 is missing.
-    * Model list for AF-DC-240-A and AF-DC-240-B is incomplete.

@@ -1,1 +1,4 @@
 .venv
+venv
+vector_store/*
+llm_summaries/*
