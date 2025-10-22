@@ -1,15 +1,14 @@
 import os
-import sys
 
-# from langchain_chains import RetrievalQA
 from langchain_chroma import Chroma
 from langchain_community.document_loaders import Docx2txtLoader, PyPDFLoader, TextLoader
+from langchain_community.llms import HuggingFacePipeline
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import PromptTemplate
 from langchain_core.runnables import RunnablePassthrough
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_openai import ChatOpenAI
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from transformers import pipeline
 
 # --- Suppress Tokenizer Warning ---
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
@@ -20,12 +19,15 @@ CLIENT_DIR_BASE = os.path.join(WORKSPACE_DIR, "client_requests")
 GOV_DIR = os.path.join(WORKSPACE_DIR, "gov_procedures")
 VECTOR_STORE_DIR = os.path.join(WORKSPACE_DIR, "vector_store")
 LLM_SUMMARIES_DIR = os.path.join(WORKSPACE_DIR, "llm_summaries")
-LLM_SERVER_URL = "http://localhost:1234/v1"
+
+# MODEL_NAME = "microsoft/Phi-3-mini-4k-instruct"
+MODEL_NAME = "Qwen/Qwen2.5-72B-Instruct-GGUF"
 EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
+MAX_TOKENS = 4096
+RETRIEVER_K = 5
 CHUNK_SIZE = 1500
 CHUNK_OVERLAP = 200
-RETRIEVER_K = 3
-MAX_CLIENT_CHARS = 32000  # *** NEW: Set a max char limit (~8000 tokens) ***
+MAX_CLIENT_CHARS = 1_000_000
 
 
 # --- DIRECTORY SETUP ---
@@ -101,8 +103,19 @@ def load_vector_store(embedding_model):
 
 # --- RAG CHAIN SETUP ---
 def setup_llm():
-    print("🔗 Connecting to local LLM via LM Studio...")
-    return ChatOpenAI(base_url=LLM_SERVER_URL, temperature=0.1)
+    pipe = pipeline(
+        "text-generation",
+        model=MODEL_NAME,
+        tokenizer=MODEL_NAME,
+        device_map="auto",
+        max_new_tokens=MAX_TOKENS,
+        temperature=0.1,
+    )
+
+    return HuggingFacePipeline(pipeline=pipe)
+
+    # print("🔗 Connecting to local LLM via LM Studio...")
+    # return ChatOpenAI(base_url=LLM_SERVER_URL, temperature=0.1)
 
 
 def setup_rag_chain(vectorstore, llm):
